@@ -14,10 +14,16 @@ class LoginRepositoryImpl implements LoginRepository {
   Future<Result<Failure, UserEntity>> login(LoginParams params) async{
 
     try {
-      final userModel = await remoteDatasource.login(params);
+       
+      final token = await remoteDatasource.login(params);
+      
+      final userModel = await remoteDatasource.getProfile(token: token);
+
       return Right(userModel);
+    } on ServerFailure {
+      return Left(ServerFailure('Email, senha ou token inválidos'));
     } catch (e) {
-      return Left(ServerFailure(e.toString()));
+      return Left(ServerFailure('Erro desconhecido: $e'));
     }
   }
 

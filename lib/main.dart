@@ -2,7 +2,11 @@ import 'package:english_app/features/login/presentation/view/login_screen.dart';
 import 'package:english_app/injector.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
   setupInjector();
   runApp(const MyApp());
 }

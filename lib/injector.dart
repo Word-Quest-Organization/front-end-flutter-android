@@ -3,13 +3,13 @@ import 'package:english_app/features/login/datasources/login_remote_datasource.d
 import 'package:english_app/features/login/domain/commands/login_command.dart';
 import 'package:english_app/features/login/domain/repositories/login_repository.dart';
 import 'package:english_app/features/login/presentation/viewmodel/login_Viewmodel.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 
 final getIt = GetIt.instance;
 
 void setupInjector() {
-
   // VIEWMODELS
   getIt.registerFactory<LoginViewModel>(
     () => LoginViewModel(loginCommand: getIt<LoginCommand>()),
@@ -27,7 +27,10 @@ void setupInjector() {
 
   // DATASOURCES
   getIt.registerLazySingleton<LoginRemoteDatasource>(
-    () => LoginRemoteDatasourceImpl(),
+    () => LoginRemoteDatasourceImpl(
+      client: getIt<http.Client>(),
+      baseUrl: dotenv.env['BASE_URL']!,
+    ),
   );
 
   // DEPENDÊNCIAS EXTERNAS
