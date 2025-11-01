@@ -1,4 +1,5 @@
-import 'package:english_app/features/login/presentation/view/login_screen.dart';
+import 'package:english_app/features/auth/presentation/view/login_screen.dart';
+import 'package:english_app/features/auth/presentation/view/register_screen.dart';
 import 'package:english_app/injector.dart';
 import 'package:flutter/material.dart';
 

@@ -1,4 +1,4 @@
-import 'package:english_app/features/login/presentation/viewmodel/login_Viewmodel.dart';
+import 'package:english_app/features/auth/presentation/viewmodel/auth_Viewmodel.dart';
 import 'package:english_app/injector.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +10,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  late final LoginViewModel viewModel;
+  late final AuthViewModel viewModel;
 
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -19,7 +19,7 @@ class _LoginScreenState extends State<LoginScreen> {
   void initState() {
     super.initState();
 
-    viewModel = getIt<LoginViewModel>();
+    viewModel = getIt<AuthViewModel>();
 
     viewModel.addListener(_onViewModelChanged);
   }
