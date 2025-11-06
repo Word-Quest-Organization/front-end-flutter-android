@@ -1,6 +1,7 @@
 import 'package:english_app/features/auth/presentation/viewmodel/auth_Viewmodel.dart';
 import 'package:english_app/injector.dart';
 import 'package:flutter/material.dart';
+import 'package:routefly/routefly.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -35,12 +36,24 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _onViewModelChanged() {
-    setState(() {});
+    if (viewModel.user != null) {
+      Routefly.navigate('/home');
+    }
+
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  void _navigateToRegister() {
+    Routefly.push('/auth/register');
   }
 
   void _performLogin() {
     viewModel.doLogin(_emailController.text, _passwordController.text);
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -91,16 +104,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
 
-            // 9. Feedback de Sucesso (para debug)
-            if (viewModel.user != null)
-              Padding(
-                padding: const EdgeInsets.only(top: 16.0),
-                child: Text(
-                  'Bem-vindo, ${viewModel.user!.name}!',
-                  style: TextStyle(color: Colors.green, fontSize: 16),
-                  textAlign: TextAlign.center,
-                ),
-              ),
+            TextButton(onPressed: _navigateToRegister, child: Text('Não tem uma conta? Cadastre-se'))
           ],
         ),
       ),

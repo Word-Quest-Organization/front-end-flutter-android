@@ -5,8 +5,11 @@ import 'package:routefly/routefly.dart';
 
 import 'app/auth/login/login_page.dart' as a0;
 import 'app/auth/register/register_page.dart' as a1;
+import 'app/home/home_page.dart' as a2;
 
 Route b0Builder(BuildContext ctx, RouteSettings settings) =>
     Routefly.defaultRouteBuilder(ctx, settings, const a0.LoginPage());
 Route b1Builder(BuildContext ctx, RouteSettings settings) =>
     Routefly.defaultRouteBuilder(ctx, settings, const a1.RegisterPage());
+Route b2Builder(BuildContext ctx, RouteSettings settings) =>
+    Routefly.defaultRouteBuilder(ctx, settings, const a2.HomePage());
