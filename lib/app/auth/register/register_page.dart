@@ -2,14 +2,14 @@ import 'package:english_app/features/auth/presentation/viewmodel/auth_Viewmodel.
 import 'package:english_app/injector.dart';
 import 'package:flutter/material.dart';
 
-class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({super.key});
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
 
   @override
-  State<RegisterScreen> createState() => _RegisterScreenState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
+class _RegisterPageState extends State<RegisterPage> {
   late final AuthViewModel viewModel;
 
   final _nameController = TextEditingController();
